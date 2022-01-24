@@ -1,5 +1,13 @@
 <template>
-  <el-form :model="LoginForm" status-icon :rules="rules" ref="LoginForm" label-width="60px" hide-required-asterisk="true"  class="LoginContainer">
+  <el-form :model="LoginForm" status-icon :rules="rules"
+           v-loading="loading"
+           element-loading-text="正在登录..."
+           element-loading-spinner="el-icon-loading"
+           element-loading-background="rgba(0, 0, 0, 0.8)"
+           ref="LoginForm"
+           label-width="60px"
+           hide-required-asterisk="true"
+           class="LoginContainer">
     <h3 class="LoginTitle">系统登录</h3>
     <el-form-item label="用户名:" prop="username">
       <el-input type="text" v-model="LoginForm.username" placeholder="请输入用户名"></el-input>
@@ -17,6 +25,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Login",
   data() {
@@ -27,6 +36,7 @@ export default {
         password: '123',
         code: ''
       },
+      loading: false,
       checked: true,
       rules: {
         username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
@@ -42,7 +52,17 @@ export default {
     submitLogin() {
       this.$refs.LoginForm.validate((valid) => {
         if (valid) {
-          alert('submit!');
+          this.loading = true;
+          this.postRequest('/login', this.LoginForm).then(resp=>{
+            if (resp) {
+              this.loading = false;
+              //存储用户token
+              const tokenStr = resp.obj.tokenHead + resp.obj.token;
+              window.sessionStorage.setItem('tokenStr', tokenStr);
+              //跳转首页 replace不能回退 push可以回退
+              this.$router.replace('/home')
+            }
+          })
         } else {
           this.$message.error('请输入所有字段!');
           return false;
@@ -54,29 +74,29 @@ export default {
 </script>
 
 <style>
-.LoginContainer {
-  border-radius: 15px;
-  background-clip: padding-box;
-  margin: 180px auto;
-  width: 350px;
-  padding: 15px 35px 15px 35px;
-  background: #fff;
-  border: 1px solid #eaeaea;
-  box-shadow: 0 0 25px #cac6c6;
-}
+  .LoginContainer {
+    border-radius: 15px;
+    background-clip: padding-box;
+    margin: 180px auto;
+    width: 350px;
+    padding: 15px 35px 15px 35px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0 25px #cac6c6;
+  }
 
-.LoginTitle {
-  margin: 0px auto 20px auto;
-  text-align: center;
-}
+  .LoginTitle {
+    margin: 0px auto 20px auto;
+    text-align: center;
+  }
 
-.LoginRemember {
-  text-align: left;
-  margin: 0px 0px 20px 60px;
-}
+  .LoginRemember {
+    text-align: left;
+    margin: 0px 0px 20px 60px;
+  }
 
-.el-form-item__content{
-  display: flex;
-  align-items: center;
-}
+  .el-form-item__content{
+    display: flex;
+    align-items: center;
+  }
 </style>
