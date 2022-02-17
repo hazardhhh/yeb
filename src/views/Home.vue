@@ -5,22 +5,22 @@
       <el-container>
         <el-aside width="200px">
           <el-menu router>
-            <el-submenu index="1" v-for="(item, index) in this.$router.options.routes"
-                        :key = "index"
+            <el-submenu index="1" v-for="(item, index) in routes"
+                        :key="index"
                         v-if="!item.hidden">
               <template slot="title">
                 <i class="el-icon-location"></i>
-                <span>{{item.name}}</span>
+                <span>{{ item.name }}</span>
               </template>
               <el-menu-item :index="children.path"
                             v-for="(children, indexj) in item.children">
-                {{children.name}}
+                {{ children.name }}
               </el-menu-item>
             </el-submenu>
           </el-menu>
         </el-aside>
         <el-main>
-          <router-view />
+          <router-view/>
         </el-main>
       </el-container>
     </el-container>
@@ -30,6 +30,11 @@
 <script>
 export default {
   name: "Home",
+  computed: {
+    routes() {
+      return this.$store.state.routes;
+    }
+  }
 }
 </script>
 
