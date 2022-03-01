@@ -268,7 +268,7 @@
             </el-col>
             <el-col :span="7">
               <el-form-item label="联系地址:" prop="address">
-                <el-input v-model="emp.assign" placeholder="请输入联系地址" size="mini" style="width: 200px"
+                <el-input v-model="emp.address" placeholder="请输入联系地址" size="mini" style="width: 200px"
                           prefix-icon="el-icon-edit"></el-input>
               </el-form-item>
             </el-col>
