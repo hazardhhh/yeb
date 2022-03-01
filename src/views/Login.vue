@@ -8,19 +8,19 @@
            label-width="60px"
            hide-required-asterisk="true"
            class="LoginContainer">
-    <h3 class="LoginTitle">系统登录</h3>
-    <el-form-item label="用户名:" prop="username">
-      <el-input type="text" v-model="LoginForm.username" placeholder="请输入用户名"></el-input>
+    <h3 class="LoginTitle">云办公</h3>
+    <el-form-item size="primary" label="用户名:" prop="username">
+      <el-input size="primary" type="text" v-model="LoginForm.username" placeholder="请输入用户名"></el-input>
     </el-form-item>
-    <el-form-item label="密码:" prop="password">
-      <el-input type="password" v-model="LoginForm.password" placeholder="请输入密码"></el-input>
+    <el-form-item size="primary" label="密码:" prop="password">
+      <el-input size="primary" type="password" v-model="LoginForm.password" placeholder="请输入密码"></el-input>
     </el-form-item>
-    <el-form-item label="验证码:" prop="code">
-      <el-input type="text" v-model="LoginForm.code" placeholder="点击图片更换验证码" style="width: 200px"></el-input>
+    <el-form-item size="primary" label="验证码:" prop="code">
+      <el-input size="primary" type="text" v-model="LoginForm.code" placeholder="点击图片更换验证码" style="width: 200px"></el-input>
       <img :src="captchaUrl" @click="updateCaptcha">
     </el-form-item>
     <el-checkbox v-model="checked" class="LoginRemember">记住我</el-checkbox>
-    <el-button type="primary" style="width: 100%" @click="submitLogin">登录</el-button>
+    <el-button size="primary" type="primary" style="width: 100%" @click="submitLogin">登录</el-button>
   </el-form>
 </template>
 
@@ -91,6 +91,8 @@ export default {
 .LoginTitle {
   margin: 0px auto 20px auto;
   text-align: center;
+  font-size: 20px;
+  color: blue;
 }
 
 .LoginRemember {
