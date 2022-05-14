@@ -59,12 +59,15 @@ export default {
   name: "Home",
   data() {
     return {
-      user: JSON.parse(window.sessionStorage.getItem('user'))
+      // user: JSON.parse(window.sessionStorage.getItem('user'))
     }
   },
   computed: {
     routes() {
       return this.$store.state.routes;
+    },
+    user() {
+      return this.$store.state.currentAdmin;
     }
   },
   methods: {
@@ -93,6 +96,9 @@ export default {
             message: '已取消操作'
           });
         });
+      }
+      if (command == 'userinfo') {
+        this.$router.push('/userinfo');
       }
     }
   }
@@ -123,7 +129,7 @@ export default {
   width: 48px;
   height: 48px;
   border-radius: 24px;
-  margin-left: 8px;
+  margin-left: 12px;
 }
 
 .homeWelcome {

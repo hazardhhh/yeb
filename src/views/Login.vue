@@ -6,7 +6,7 @@
            element-loading-background="rgba(0, 0, 0, 0.8)"
            ref="LoginForm"
            label-width="60px"
-           hide-required-asterisk="true"
+           :hide-required-asterisk="true"
            class="LoginContainer">
     <h3 class="LoginTitle">云办公</h3>
     <el-form-item size="primary" label="用户名:" prop="username">
@@ -16,7 +16,8 @@
       <el-input size="primary" type="password" v-model="LoginForm.password" placeholder="请输入密码"></el-input>
     </el-form-item>
     <el-form-item size="primary" label="验证码:" prop="code">
-      <el-input size="primary" type="text" v-model="LoginForm.code" placeholder="点击图片更换验证码" style="width: 200px"></el-input>
+      <el-input size="primary" type="text" v-model="LoginForm.code" placeholder="点击图片更换验证码"
+                style="width: 200px"></el-input>
       <img :src="captchaUrl" @click="updateCaptcha">
     </el-form-item>
     <el-checkbox v-model="checked" class="LoginRemember">记住我</el-checkbox>
