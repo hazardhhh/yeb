@@ -3,16 +3,21 @@
     <el-container>
       <el-header class="homeHeader">
         <div class="title">云办公</div>
-        <div>
-          <el-button icon="el-icon-bell"
-                     type="text"
-                     size="normal"
-                     style="margin-right: 8px;color: black"
-                     @click="goChat"></el-button>
+        <div class="header-right">
           <el-dropdown class="userInfo" @command="commandHandler">
-            <span class="el-dropdown-link">
-                {{ user.name }}<i><img :src="user.userFace"></i>
-            </span>
+            <div class="">
+              <el-button 
+                  icon="el-icon-bell"
+                  type="text"
+                  size="normal"
+                  style="margin-right: 8px;color: black"
+                  @click="goChat"></el-button>
+              <span class="el-dropdown-link">
+                  <!-- {{ user.name }}<i><img :src="user.userFace"></i> -->
+                  {{user.name}}
+              </span>
+            </div>
+            <img :src="user.userFace" class="header-logo">
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="userinfo">个人中心</el-dropdown-item>
               <el-dropdown-item command="setting">设置</el-dropdown-item>
@@ -142,5 +147,21 @@ export default {
 
 .homeRouterView {
   margin-top: 10px;
+}
+
+.header-right{
+  position: relative;
+}
+.header-logo{
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  margin-left: 12px;
+  position: absolute;
+  top: -3px;
+  right: -54px;
+}
+.el-header{
+  padding: 0 80px 0 20px !important;
 }
 </style>

@@ -21,6 +21,7 @@ export const initMenu = (router, store) => {
 
 export const formatRoutes = (routes) => {
     let fmtRoutes = [];
+    // let fmtRoutes = ['/home'];
     routes.forEach(router => {
         let {
             path,
@@ -55,6 +56,8 @@ export const formatRoutes = (routes) => {
             }
         }
         fmtRoutes.push(fmRouter)
+        // console.log(fmtRoutes)
+
     });
     return fmtRoutes;
 }

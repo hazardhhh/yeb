@@ -43,12 +43,14 @@ export default {
         username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
         password: [{required: true, message: '请输入密码', trigger: 'blur'}],
         code: [{required: true, message: '请输入验证码', trigger: 'blur'}],
-      }
+      },
+      timeShow:''
     }
   },
   methods: {
     updateCaptcha() {
-      this.captchaUrl = '/captcha?time=' + new Date();
+      this.captchaUrl = '/captcha?time=' + this.timeShow;
+      // this.captchaUrl = '/captcha?time=' + new Date();
     },
     submitLogin() {
       this.$refs.LoginForm.validate((valid) => {
@@ -73,6 +75,10 @@ export default {
         }
       });
     }
+  },
+  created(){
+    this.timeShow = new Date()
+    console.log(this.timeShow)
   }
 }
 </script>
