@@ -49,8 +49,8 @@ export default {
   },
   methods: {
     updateCaptcha() {
-      this.captchaUrl = '/captcha?time=' + this.timeShow;
-      // this.captchaUrl = '/captcha?time=' + new Date();
+      // this.captchaUrl = '/captcha?time=' + this.timeShow;
+      this.captchaUrl = '/captcha?time=' + new Date();
     },
     submitLogin() {
       this.$refs.LoginForm.validate((valid) => {

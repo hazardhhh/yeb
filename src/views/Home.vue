@@ -10,7 +10,7 @@
                   icon="el-icon-bell"
                   type="text"
                   size="normal"
-                  style="margin-right: 8px;color: black"
+                  style="margin-right: 5px;color: black;margin-top: 10px"
                   @click="goChat"></el-button>
               <span class="el-dropdown-link">
                   <!-- {{ user.name }}<i><img :src="user.userFace"></i> -->
@@ -158,10 +158,14 @@ export default {
   border-radius: 24px;
   margin-left: 12px;
   position: absolute;
-  top: -3px;
+  top: 0px;
   right: -54px;
 }
 .el-header{
   padding: 0 80px 0 20px !important;
+}
+
+.el-dropdown-link {
+  margin-right: 10px;
 }
 </style>
